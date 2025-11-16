@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aktif Ödünç Kayıtları</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div th:replace="~{navbar :: navbar}"></div> 
+    
+    <div class="container my-5">
+        
+        <h1>📑 Aktif Ödünç Kayıtları</h1>
+        
+        <p>
+            <a th:href="@{/loans/new}" class="btn btn-primary">Yeni Ödünç Kaydı Yap</a>
+        </p>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Kitap Adı</th>
+                    <th>Üye Adı</th>
+                    <th>Ödünç Tarihi</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="loan : ${loans}">
+                    <td th:text="${loan.book.title}"></td>
+                    <td th:text="${loan.member.firstName} + ' ' + ${loan.member.lastName}"></td>
+                    <td th:text="${loan.loanDate}"></td>
+                    <td>
+                        <a th:href="@{/loans/return/{id}(id=${loan.id})}" class="btn btn-sm btn-success" 
+                           onclick="return confirm('Kitap iade edilsin mi? Stok güncellenecektir.');">İade Et</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

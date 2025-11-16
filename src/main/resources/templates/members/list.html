@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Üye Listesi</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div th:replace="~{navbar :: navbar}"></div> 
+
+    <div class="container my-5">
+        
+        <h1>👥 Kütüphane Üye Listesi</h1>
+        
+        <p>
+            <a th:href="@{/members/new}" class="btn btn-primary">Yeni Üye Ekle</a>
+        </p>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>E-posta</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="member : ${members}">
+                    <td th:text="${member.firstName}">Ad</td>
+                    <td th:text="${member.lastName}">Soyad</td>
+                    <td th:text="${member.email}">email@example.com</td>
+                    <td>
+                        <a th:href="@{/members/edit/{id}(id=${member.id})}" class="btn btn-sm btn-warning">Düzenle</a>
+                        <a th:href="@{/members/delete/{id}(id=${member.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Üyeyi silmek istediğinizden emin misiniz?');">Sil</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

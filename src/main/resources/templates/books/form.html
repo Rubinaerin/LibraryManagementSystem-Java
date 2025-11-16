@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${book.id == null ? 'Yeni Kitap Ekle' : 'Kitap Düzenle'}"></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 th:text="${book.id == null ? 'Yeni Kitap Ekle' : 'Kitap Düzenle'}"></h1>
+        
+        <form th:action="@{/books}" th:object="${book}" method="post">
+            
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="form-group">
+                <label for="title">Başlık:</label>
+                <input type="text" th:field="*{title}" id="title" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="author">Yazar:</label>
+                <input type="text" th:field="*{author}" id="author" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" th:field="*{isbn}" id="isbn" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="stockCount">Stok Sayısı:</label>
+                <input type="number" th:field="*{stockCount}" id="stockCount" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-success" th:text="${book.id == null ? 'Kaydet' : 'Güncelle'}">Kaydet</button>
+            <a th:href="@{/books}" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</body>
+</html>

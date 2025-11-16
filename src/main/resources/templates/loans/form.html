@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ödünç Kitap Ver</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1>📖 Ödünç Kitap Ver</h1>
+        
+        <form th:action="@{/loans}" th:object="${loan}" method="post">
+            
+            <div class="form-group">
+                <label for="bookId">Kitap Seçin:</label>
+                <select id="bookId" name="bookId" class="form-control" required>
+                    <option th:each="book : ${books}" 
+                            th:value="${book.id}" 
+                            th:text="${book.title} + ' (Stok: ' + ${book.stockCount} + ')'"
+                            th:disabled="${book.stockCount <= 0}">
+                        Kitap Adı (Stok: X)
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="memberId">Üye Seçin:</label>
+                <select id="memberId" name="memberId" class="form-control" required>
+                    <option th:each="member : ${members}" 
+                            th:value="${member.id}" 
+                            th:text="${member.firstName} + ' ' + ${member.lastName}">
+                        Üye Adı Soyadı
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Ödünç Ver</button>
+            <a th:href="@{/loans}" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</body>
+</html>

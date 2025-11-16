@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kütüphane Yönetim Paneli</title>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .full-height-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Dikeyde ortalar */
+            align-items: center;
+            padding-top: 60px;
+        }
+        .module-row {
+            width: 50%;
+            max-width: 500px;
+        }
+        .card-link { 
+            display: block; 
+            width: 100%; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: transform 0.2s; 
+        }
+        .card-link:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card {
+            min-height: 150px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .module-col {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{navbar :: navbar}"></div> 
+
+    <div class="full-height-container container">
+        <h1 class="mb-5 text-center">📚 Kütüphane Yönetim Sistemi Paneli</h1>
+
+        <div class="row module-row"> 
+            
+            <div class="col-12 module-col"> 
+                <a th:href="@{/books}" class="card-link">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h2 class="card-title">Kitap Modülü</h2>
+                            <p class="card-text">Kitap ekleme, listeleme ve stok yönetimi.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 module-col">
+                <a th:href="@{/members}" class="card-link">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h2 class="card-title">Üye Modülü</h2>
+                            <p class="card-text">Üye kayıtlarını ve bilgilerini yönetin.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 module-col">
+                <a th:href="@{/loans}" class="card-link">
+                    <div class="card bg-warning text-dark">
+                        <div class="card-body">
+                            <h2 class="card-title">Ödünç Modülü</h2>
+                            <p class="card-text">Aktif ödünç kayıtlarını takip edin ve iade işlemlerini yapın.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+        </div> </div> </body>
+</html>
