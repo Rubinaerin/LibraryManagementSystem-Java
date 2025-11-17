@@ -1,87 +1,51 @@
-# 📚 Kütüphane Yönetim Sistemi (Library Management System)
+# 📚 Kütüphane Yönetim Sistemi (Java & Spring Boot)
 
-Bu proje, Spring Boot, Spring Data JPA ve Thymeleaf kullanılarak geliştirilmiş tam özellikli bir Kütüphane Yönetim Sistemi web uygulamasıdır. Kullanıcıların kitapları, üyeleri ve ödünç alma/iade işlemlerini kolayca yönetmesini sağlar.
+Bu proje, Java, Spring Boot, Spring Data JPA (Hibernate) ve Thymeleaf kullanılarak geliştirilmiş, kütüphane envanterini ve üye işlemlerini yönetmek için tasarlanmış web tabanlı bir uygulamadır.
 
 ## 🌟 Temel Özellikler
 
-* **Kitap Yönetimi:** Yeni kitap ekleme, mevcut kitapları listeleme, güncelleme ve silme (CRUD).
-* **Üye Yönetimi:** Kütüphane üyelerini kaydetme, düzenleme ve silme (CRUD).
-* **Ödünç/İade İşlemleri:** Kitapları üyelere ödünç verme ve iade kayıtlarını tutma.
-* **Arayüz:** Temiz ve Bootstrap tabanlı kullanıcı arayüzü (Thymeleaf ile).
-
-## 🛠️ Kullanılan Teknolojiler
-
-| Teknoloji | Açıklama |
-| :--- | :--- |
-| **Backend** | Java 17 |
-| **Framework** | Spring Boot 3 |
-| **Veritabanı** | Spring Data JPA (H2 In-Memory Database) |
-| **Şablon Motoru** | Thymeleaf |
-| **Arayüz** | HTML5, Bootstrap 4 |
-| **Bağımlılık Yöneticisi** | Gradle |
+* **Merkezi Yönetim Paneli:** Tüm modüllere tek bir ana sayfadan erişim.
+* **Kitap Yönetimi:** Kitap ekleme, listeleme, düzenleme ve **stok takibi** (CRUD).
+* **Üye Yönetimi:** Üye kayıtları ve bilgileri (CRUD).
+* **Ödünç İşlemleri:** Kitap stoklarını otomatik güncelleyen ödünç verme ve iade mekanizması.
+* **Teknolojiler:** Dockerize edilmiş SQL Server (Veritabanı), Gradle.
 
 ## 📸 Uygulama Ekran Görüntüleri
 
-Projenin temel modüllerinden alınan ekran görüntüleri aşağıdadır:
+Projenin ana modüllerinden alınan güncel görüntüler aşağıdadır:
 
-### Ana Panel
-Uygulamanın ana sayfası. Buradan tüm modüllere erişilebilir.
-![Ana Sayfa Ekran Görüntüsü](images/ana_panel.png) 
-*(NOT: Lütfen bu kısma Ana Panelinizin ekran görüntüsünü yükleyin)*
+| Modül | Açıklama | Görüntü |
+| :--- | :--- | :--- |
+| **Yönetim Paneli** | Tüm kütüphane modüllerine erişim sağlayan merkezi giriş sayfası. | ![Kütüphane Yönetim Paneli](images:Ekran Resmi 2025-11-16 19.17.54.png) |
+| **Kitap Listesi** | Mevcut kitapların listesi, stok durumları ve düzenleme/silme seçenekleri. | ![Kitap Listesi](images:Ekran Resmi 2025-11-16 19.18.14.png) |
+| **Yeni Kitap Ekle** | Kitap kayıt formu. | ![Yeni Kitap Ekle Formu](images:Ekran Resmi 2025-11-16 19.18.38.png) |
+| **Üye Listesi** | Kayıtlı üyelerin listesi ve iletişim bilgileri. | ![Üye Listesi](images:Ekran Resmi 2025-11-16 19.18.52.png) |
+| **Yeni Üye Ekle** | Üye kayıt formu. | ![Yeni Üye Ekle Formu](images:Ekran Resmi 2025-11-16 19.19.07.png) |
+| **Aktif Ödünç Kayıtları** | Devam eden ödünç işlemlerini gösterir ve iade butonu içerir. | ![Aktif Ödünç Kayıtları](images:Ekran Resmi 2025-11-16 19.19.52.png) |
+| **Ödünç Kitap Ver Formu** | Kitap ve üye seçimi yapılarak yeni ödünç kaydı oluşturma formu. | ![Ödünç Kitap Ver Formu](images:Ekran Resmi 2025-11-16 19.20.38.png) |
 
-### Kitap Listesi
-Kütüphanedeki tüm kitapların listelendiği, arama ve düzenleme yapılabilen sayfa.
-![Kitap Listesi Ekran Görüntüsü](images/kitap_listesi.png)
-*(NOT: Lütfen bu kısma Kitap Listesi sayfanızın ekran görüntüsünü yükleyin)*
+## ⚙️ Kurulum ve Çalıştırma
 
-### Ödünç Alma Formu
-Yeni bir kitap ödünç alma kaydının yapıldığı form.
-![Ödünç Formu Ekran Görüntüsü](images/odunc_formu.png)
-*(NOT: Lütfen bu kısma Ödünç Alma Formu sayfanızın ekran görüntüsünü yükleyin)*
+Projeyi yerel makinenizde çalıştırmak için Java 17 ve Docker'ın kurulu olması gerekir.
 
-## ⚙️ Yerel Kurulum ve Çalıştırma
-
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları takip edin:
-
-1.  **Projeyi Klonlayın:**
+1.  **Depoyu Klonlayın:**
     ```bash
     git clone [https://github.com/Rubinaerin/LibraryManagementSystem-Java.git](https://github.com/Rubinaerin/LibraryManagementSystem-Java.git)
     cd LibraryManagementSystem-Java
     ```
-2.  **Uygulamayı Çalıştırın:** Projenin ana dizininde (build.gradle dosyasının bulunduğu yer) terminali açın ve aşağıdaki komutu çalıştırın:
+
+2.  **Veritabanını Başlatın (Docker):**
+    ```bash
+    docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=SizinGucluSifreniz!' -e 'MSSQL_PID=Developer' -p 1433:1433 --name sql-server-library -d [mcr.microsoft.com/mssql/server:2019-latest](https://mcr.microsoft.com/mssql/server:2019-latest)
+    ```
+    *(NOT: `SA_PASSWORD` kısmını kendi güçlü şifrenizle değiştirin.)*
+
+3.  **Uygulamayı Başlatın (Gradle):**
     ```bash
     ./gradlew bootRun
     ```
-3.  **Erişim:** Uygulama başarıyla başlatıldıktan sonra tarayıcınızda şu adrese gidin:
+
+4.  **Erişim:** Tarayıcınızda şu adrese gidin:
     ```
     http://localhost:8083/
     ```
-
----
-
-## 🖼️ Ekran Görüntülerini Ekleme
-
-README dosyasında ekran görüntülerinizin görünmesi için, projenizin ana dizininde (build.gradle'ın olduğu yer) **`images`** adında yeni bir klasör oluşturmanız ve içine ekran görüntülerini kaydetmeniz gerekir.
-
-1.  Projenizin ana klasöründe yeni bir klasör oluşturun:
-    ```bash
-    mkdir images
-    ```
-2.  Ekran görüntülerinizi bu `images` klasörüne kopyalayın ve isimlerini README dosyasındaki gibi yapın:
-    * `ana_panel.png`
-    * `kitap_listesi.png`
-    * `odunc_formu.png`
-
-## 3. 💾 Değişiklikleri GitHub'a Yükleme
-
-`README.md` dosyasını ve `images` klasörünü oluşturduktan sonra, bu yeni dosyaları GitHub'a göndermeliyiz:
-
-```bash
-# Yeni dosyaları takibe ekle
-git add README.md images/
-
-# Değişiklikleri kaydet
-git commit -m "feat: Add comprehensive README and screenshots"
-
-# GitHub'a yükle (Bu komut başarılı olmalı, çünkü depo zaten var)
-git push origin main
