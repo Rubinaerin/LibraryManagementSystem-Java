@@ -16,11 +16,11 @@ Projenin ana modüllerinden alınan güncel görüntüler aşağıdadır:
 
 | Modül | Açıklama | Görüntü |
 | :--- | :--- | :--- |
-| **Yönetim Paneli** | Tüm kütüphane modüllerine erişim sağlayan merkezi giriş sayfası. | ![Kütüphane Yönetim Paneli](images/Ekran Resmi 2025-11-16 19.17.54.png) |
+| **Yönetim Paneli** | Tüm kütüphane modüllerine erişim sağlayan merkezi giriş sayfası. | ![Yönetim Paneli](images/Ekran Resmi 2025-11-16 19.17.54.png) |
 | **Kitap Listesi** | Mevcut kitapların listesi, stok durumları ve düzenleme/silme seçenekleri. | ![Kitap Listesi](images/Ekran Resmi 2025-11-16 19.18.14.png) |
-| **Yeni Kitap Ekle** | Kitap kayıt formu. | ![Yeni Kitap Ekle Formu](images/Ekran Resmi 2025-11-16 19.18.38.png) |
+| **Yeni Kitap Ekle** | Yeni kitap kayıt formu. | ![Yeni Kitap Ekle Formu](images/Ekran Resmi 2025-11-16 19.18.38.png) |
 | **Üye Listesi** | Kayıtlı üyelerin listesi ve iletişim bilgileri. | ![Üye Listesi](images/Ekran Resmi 2025-11-16 19.18.52.png) |
-| **Yeni Üye Ekle** | Üye kayıt formu. | ![Yeni Üye Ekle Formu](images/Ekran Resmi 2025-11-16 19.19.07.png) |
+| **Yeni Üye Ekle** | Yeni üye kayıt formu. | ![Yeni Üye Ekle Formu](images/Ekran Resmi 2025-11-16 19.19.07.png) |
 | **Aktif Ödünç Kayıtları** | Devam eden ödünç işlemlerini gösterir ve iade butonu içerir. | ![Aktif Ödünç Kayıtları](images/Ekran Resmi 2025-11-16 19.19.52.png) |
 | **Ödünç Kitap Ver Formu** | Kitap ve üye seçimi yapılarak yeni ödünç kaydı oluşturma formu. | ![Ödünç Kitap Ver Formu](images/Ekran Resmi 2025-11-16 19.20.38.png) |
 
